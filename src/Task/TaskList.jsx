@@ -1,6 +1,6 @@
 import { GoStar, GoStarFill } from "react-icons/go";
 
-export default function TaskList({ tasks, onEdit, onDelete }) {
+export default function TaskList({ tasks, onEdit, onDelete, onFav }) {
   return (
     <div className="overflow-auto">
       <table className="table-fixed overflow-auto xl:w-full">
@@ -36,7 +36,9 @@ export default function TaskList({ tasks, onEdit, onDelete }) {
               className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
             >
               <td>
-                {task.isFavorite ? <GoStarFill color="yellow" /> : <GoStar />}
+                <button onClick={() => onFav(task.id)}>
+                  {task.isFavorite ? <GoStarFill color="yellow" /> : <GoStar />}
+                </button>
               </td>
               <td>{task.title}</td>
               <td>
